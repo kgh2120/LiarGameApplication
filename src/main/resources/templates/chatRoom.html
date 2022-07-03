@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>채팅방</title>
+
+    <script src="/webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+        }
+
+        #chatt{
+            width: 800px;
+            margin: 20px auto;
+        }
+
+        #chatt #draw_text{
+            width: 800px;
+            height: 400px;
+            overflow: scroll;
+            border : 1px solid #aaa;
+        }
+        #chatt #text_area{
+            width: 740px;
+            height:100px;
+            display: inline-block;
+        }
+
+        #chatt #sendZone > *{
+            vertical-align: top;
+
+        }
+        #chatt #btn_send{
+            width: 54px;
+            height: 100px;
+        }
+
+        .chat_my, .chat_other, .chat_system{
+            width: 70%;
+            display: inline-block;
+            padding: 6px;
+            border-radius:10px;
+        }
+        #chatt .outter{
+
+            display: flex;
+            justify-content: center;
+        }
+        #chatt .chat_my{
+            background-color : #ffc;
+            margin : 1px 0px 2px 30%;
+            border-radius:10px;
+        }
+
+        #chatt .chat_system{
+            background-color : #aaaaaa;
+            text-align: center;
+            width: 100%;
+            font-weight: 600;
+
+        }
+
+        #chatt .chat_other{
+            background-color : #eee;
+            margin : 2px;
+        }
+        #roomNum{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 th:text= "|${roomId}에 오신걸 환영합니다. |"></h1>
+    <div id="chatt">
+
+        <div  id = "roomNum" th:text="${roomId}" ></div>
+        <input type="text" placeholder="닉네임" id="input_sender" readonly>
+        <div id="draw_text"></div>
+        <div id="sendZone">
+            <textarea id="text_area"></textarea>
+            <button id="btn_send" type="button">보내기</button>
+        </div>
+    </div>
+
+    <script src="/chat.js"></script>
+
+</body>
+</html>
