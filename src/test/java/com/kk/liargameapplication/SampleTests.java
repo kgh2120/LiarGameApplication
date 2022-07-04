@@ -17,7 +17,7 @@ public class SampleTests {
     @Test
     void failTest() {
         String a = "hi";
-        String b = "h";
+        String b = "hh";
         assertThat(a).isEqualTo(b);
     }
 }
