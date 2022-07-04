@@ -14,4 +14,10 @@ public class SampleTests {
         String b = "hi";
         assertThat(a).isEqualTo(b);
     }
+    @Test
+    void failTest() {
+        String a = "hi";
+        String b = "h";
+        assertThat(a).isEqualTo(b);
+    }
 }
